@@ -43,7 +43,6 @@ public class ScanActivity extends AppCompatActivity {
             );
         }
 
-
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
         mCodeScanner = new CodeScanner(this, scannerView);
         mCodeScanner.setDecodeCallback(new DecodeCallback() {
@@ -53,6 +52,9 @@ public class ScanActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(ScanActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        Intent _intent = new Intent(getApplicationContext(), MainActivity.class);
+                        _intent.putExtra("text", result.getText().toString());
+                        startActivity(_intent);
                     }
                 });
             }
@@ -90,5 +92,6 @@ public class ScanActivity extends AppCompatActivity {
                     // decision.
                 }
             });
+
 
 }
