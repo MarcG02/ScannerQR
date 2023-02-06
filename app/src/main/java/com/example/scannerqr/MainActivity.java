@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,16 +20,11 @@ public class MainActivity extends AppCompatActivity {
         Button startButton = findViewById(R.id.button);
         TextView textView = findViewById(R.id.viewTextId);
 
-        try {
-
-            myText = savedInstanceState.getString("text");
-            textView.setText(getIntent().getStringExtra("text"));
-
-        }catch (Exception e){
-
+        Bundle parametros = this.getIntent().getExtras();
+        if(parametros !=null){
+            String datos = parametros.getString("text");
+            textView.setText(datos);
         }
-
-
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
